@@ -8,12 +8,12 @@ export const constantRouterMap = [
 		path: '/',
 		name: 'Home',
 		component: BasicLayout,
-		redirect: '/dashboard',
+		redirect: '/Dashboard',
 		children: [
 			{
-				path: '/dashboard',
+				path: '/Dashboard',
 				name: 'Dashboard',
-				component: () => import('@/views/dashboard/Workplace'),
+				component: () => import('@/views/Dashboard/Workplace'),
 				meta: {
 					title: '首页',
 					keepAlive: true,
@@ -23,43 +23,44 @@ export const constantRouterMap = [
 		],
 	},
 	{
-		path: '/article',
+		path: '/Article',
 		name: 'Article',
 		component: BasicLayout,
 		menuFolderOpen: false,
-		redirect: '/article-list',
+		childrenLen: 2,
+		redirect: '/Article/List',
 		meta: { title: '文章管理', icon: 'profile' },
 		children: [
 			{
-				path: '/article-list',
+				path: '/Article/List',
 				name: 'ArticleList',
-				component: () => import('@/views/article/article-list'),
+				component: () => import('@/views/Article/List'),
 				meta: { title: '文章列表' },
 			},
 			{
-				path: '/article-edit',
+				path: '/Article/Edit',
 				name: 'ArticleEdit',
 				hidden: true,
-				component: () => import('@/views/article/article-edit'),
+				component: () => import('@/views/Article/Edit'),
 				meta: { title: '编辑文章' },
 			},
 			{
-				path: '/tag-list',
+				path: '/Tag/list',
 				name: 'TagList',
-				component: () => import('@/views/article/tag-list'),
+				component: () => import('@/views/Tag/List'),
 				meta: { title: '标签列表' },
 			},
 		],
 	},
 	{
-		path: '/color',
-		name: 'color',
+		path: '/Color',
+		name: 'Color',
 		component: BasicLayout,
 		children: [
 			{
-				path: '/color',
-				name: 'color',
-				component: () => import('@/views/color'),
+				path: '/Color',
+				name: 'Color',
+				component: () => import('@/views/Color'),
 				meta: {
 					title: '图库',
 					keepAlive: true,
@@ -76,17 +77,17 @@ export const constantRouterMap = [
 	},
 	{
 		path: '/403',
-		component: () => import('@/views/exception/403'),
+		component: () => import('@/views/Exception/403'),
 		hidden: true,
 	},
 	{
 		path: '/404',
-		component: () => import('@/views/exception/404'),
+		component: () => import('@/views/Exception/404'),
 		hidden: true,
 	},
 	{
 		path: '/500',
-		component: () => import('@/views/exception/500'),
+		component: () => import('@/views/Exception/500'),
 		hidden: true,
 	},
 ];

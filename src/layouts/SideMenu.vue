@@ -54,6 +54,9 @@
               <div
                 :title="route.meta.title"
                 class="layout-menu-link"
+                :class="{
+                  'layout-menu-link-current': route.menuFolderOpen,
+                }"
                 @click="route.menuFolderOpen = !route.menuFolderOpen"
               >
                 <span class="layout-menu-link-inner">
@@ -67,31 +70,34 @@
               </div>
               <ul
                 class="layout-sub-menu"
-                :style="
-                  subMenuStyle(route.children.length, route.menuFolderOpen)
-                "
+                :style="subMenuStyle(route.childrenLen, route.menuFolderOpen)"
               >
-                <li
-                  class="layout-sub-menu-item"
-                  :key="child.path"
-                  v-for="child in route.children"
-                >
-                  <router-link
-                    :title="child.meta && child.meta.title"
-                    class="layout-menu-link"
+                <template v-for="child in route.children">
+                  <li
+                    class="layout-sub-menu-item"
                     :class="{
-                      'layout-menu-link-current': currentRoute === child.path,
+                      'layout-sub-menu-item-current': currentRoute === child.path,
                     }"
-                    :to="child.path"
+                    :key="child.path"
+                    v-if="!child.hidden"
                   >
-                    <span class="layout-menu-link-inner">
-                      <span class="layout-menu-name">{{
-                        child.meta.title
-                      }}</span>
-                    </span>
-                    <i class="layout-icon-reddot"></i>
-                  </router-link>
-                </li>
+                    <router-link
+                      :title="child.meta && child.meta.title"
+                      class="layout-menu-link"
+                      :class="{
+                        'layout-menu-link-current': currentRoute === child.path,
+                      }"
+                      :to="child.path"
+                    >
+                      <span class="layout-menu-link-inner">
+                        <span class="layout-menu-name">{{
+                          child.meta.title
+                        }}</span>
+                      </span>
+                      <i class="layout-icon-reddot"></i>
+                    </router-link>
+                  </li>
+                </template>
               </ul>
             </li>
           </template>
@@ -119,6 +125,12 @@ export default {
   computed: {
     currentRoute() {
       return this.$route.path;
+    },
+    routeChildrenLength() {
+      let len = 0;
+
+      return len;
+      // return 0
     },
   },
   mounted() {
@@ -187,25 +199,25 @@ export default {
     border-left: 4px solid transparent;
     display: block;
     cursor: pointer;
-    &.layout-menu-link-current {
+    &-current {
       color: #3590ff;
       .layout-menu-icon {
         color: inherit;
       }
     }
-  }
-  .layout-menu-link:hover {
-    text-decoration: none;
-    background-color: rgba(0, 0, 0, 0.03);
-  }
-  .layout-menu-link-inner {
-    display: inline-block;
-    vertical-align: top;
-    max-width: 100%;
-    // color: #222222;
-    .layout-menu-icon {
-      font-size: 18px;
-      vertical-align: middle;
+    &-inner {
+      display: inline-block;
+      vertical-align: top;
+      max-width: 100%;
+      // color: #222222;
+      .layout-menu-icon {
+        font-size: 18px;
+        vertical-align: middle;
+      }
+    }
+    &:hover {
+      text-decoration: none;
+      background-color: rgba(0, 0, 0, 0.03);
     }
   }
   .layout-icon-reddot {
@@ -275,6 +287,9 @@ export default {
     .layout-sub-menu-item {
       line-height: 36px;
       height: 36px;
+      &-current {
+        color: #3590ff;
+      }
       .layout-menu-link {
         // padding-left: 84px;
       }

@@ -1062,15 +1062,7 @@
     "@babel/types" "^7.4.4"
     esutils "^2.0.2"
 
-"@babel/runtime-corejs3@^7.11.2":
-  version "7.18.3"
-  resolved "https://registry.npmmirror.com/@babel/runtime-corejs3/-/runtime-corejs3-7.18.3.tgz#52f0241a31e0ec61a6187530af6227c2846bd60c"
-  integrity sha512-l4ddFwrc9rnR+EJsHsh+TJ4A35YqQz/UqcjtlX2ov53hlJYG5CxtQmNZxyajwDVmCxwy++rtvGU5HazCK4W41Q==
-  dependencies:
-    core-js-pure "^3.20.2"
-    regenerator-runtime "^0.13.4"
-
-"@babel/runtime@^7.11.0", "@babel/runtime@^7.11.2", "@babel/runtime@^7.8.4":
+"@babel/runtime@^7.11.0", "@babel/runtime@^7.8.4":
   version "7.18.3"
   resolved "https://registry.npmmirror.com/@babel/runtime/-/runtime-7.18.3.tgz#c7b654b57f6f63cf7f8b418ac9ca04408c4579f4"
   integrity sha512-38Y8f7YUhce/K7RMwTp7m0uCumpv9hZkitCbBClqQIow1qSbCvGkcegKOXpEWCQLfWmevgRiWokZ1GkpfhbZug==
@@ -3284,11 +3276,6 @@ core-js-compat@^3.21.0, core-js-compat@^3.22.1, core-js-compat@^3.6.5:
   dependencies:
     browserslist "^4.20.3"
     semver "7.0.0"
-
-core-js-pure@^3.20.2:
-  version "3.22.8"
-  resolved "https://registry.npmmirror.com/core-js-pure/-/core-js-pure-3.22.8.tgz#f2157793b58719196ccf9673cc14f3683adc0957"
-  integrity sha512-bOxbZIy9S5n4OVH63XaLVXZ49QKicjowDx/UELyJ68vxfCRpYsbyh/WNZNfEfAk+ekA8vSjt+gCDpvh672bc3w==
 
 core-js@2, core-js@^2.4.0, core-js@^2.5.7:
   version "2.6.12"
@@ -8697,11 +8684,6 @@ ts-pnp@^1.1.6:
   resolved "https://registry.npmmirror.com/ts-pnp/-/ts-pnp-1.2.0.tgz#a500ad084b0798f1c3071af391e65912c86bca92"
   integrity sha512-csd+vJOb/gkzvcCHgTGSChYpy5f1/XKNsmvBGO4JXS+z1v2HobugDz4s1IeFXM3wZB44uczs+eazB5Q/ccdhQw==
 
-tslib@^2.1.0:
-  version "2.4.0"
-  resolved "https://registry.npmmirror.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
-  integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
-
 tty-browserify@0.0.0:
   version "0.0.0"
   resolved "https://registry.npmmirror.com/tty-browserify/-/tty-browserify-0.0.0.tgz#a157ba402da24e9bf957f9aa69d524eed42901a6"
@@ -9123,15 +9105,6 @@ vuex@^3.4.0:
   version "3.6.2"
   resolved "https://registry.npmmirror.com/vuex/-/vuex-3.6.2.tgz#236bc086a870c3ae79946f107f16de59d5895e71"
   integrity sha512-ETW44IqCgBpVomy520DT5jf8n0zoCac+sxWnn+hMe/CzaSejb/eVw2YToiXYX+Ex/AuHHia28vWTq4goAexFbw==
-
-wangeditor@^4.5.2:
-  version "4.7.15"
-  resolved "https://registry.npmmirror.com/wangeditor/-/wangeditor-4.7.15.tgz#38c5e279a79d0428e4fd77ae5be46367e9c819e5"
-  integrity sha512-aPTdREd8BxXVyJ5MI+LU83FQ7u1EPd341iXIorRNYSOvoimNoZ4nPg+yn3FGbB93/owEa6buLw8wdhYnMCJQLg==
-  dependencies:
-    "@babel/runtime" "^7.11.2"
-    "@babel/runtime-corejs3" "^7.11.2"
-    tslib "^2.1.0"
 
 warning@^4.0.0:
   version "4.0.3"

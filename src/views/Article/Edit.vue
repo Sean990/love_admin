@@ -19,7 +19,29 @@
               :disabled="isEdit"
             ></a-input>
           </a-form-item>
-
+          <a-form-item>
+            <!-- Create toolbar container -->
+          <div id="toolbar" style="line-height: normal">
+            <!-- Add font size dropdown -->
+            <select class="ql-size">
+              <option value="small">小</option>
+              <!-- Note a missing, thus falsy value, is used to reset to default -->
+              <option selected>默认</option>
+              <option value="large">大</option>
+              <option value="huge">超大</option>
+            </select>
+            <!-- Add a bold button -->
+            <button class="ql-bold"></button>
+          </div>
+            <quill-editor
+              ref="myQuillEditor"
+              v-model="content"
+              :options="editorOption"
+              @blur="onEditorBlur($event)"
+              @focus="onEditorFocus($event)"
+              @ready="onEditorReady($event)"
+            />
+          </a-form-item>
           <a-form-item v-bind="buttonCol">
             <a-row>
               <a-col span="6">
@@ -38,11 +60,19 @@
 </template>
 
 <script>
+// require styles
+import "quill/dist/quill.core.css";
+import "quill/dist/quill.snow.css";
+
+import { quillEditor } from "vue-quill-editor";
+
 import moment from "moment";
 import pick from "lodash.pick";
 export default {
   name: "ArticleEdit",
-  components: {},
+  components: {
+    quillEditor,
+  },
   data() {
     return {
       isEdit: false,
@@ -61,6 +91,35 @@ export default {
           sm: { span: 12, offset: 5 },
         },
       },
+      content: "",
+      editorOption: {
+        /* quill options */
+        placeholder: "输入故事内容",
+        modules: {
+          toolbar: '#toolbar'
+          // [
+          // { 'direction': 'rtl' },
+          //   "clean",
+          //   { header: [1, 2, 3, 4, 5, 6, false] },
+          //   { size: ["small", false, "large", "huge"] },
+          //   "bold",
+          //   "italic",
+          //   "strike",
+          //   "underline",
+          //   "link",
+          //   { align: [] },
+          //   { list: "ordered" },
+          //   { list: "bullet" },
+          //   "blockquote",
+          //   "code-block",
+          //   { indent: "-1" },
+          //   { indent: "+1" },
+          //   { background: [] },
+          //   { color: [] },
+          //   "image",
+          // ],
+        },
+      },
       form: this.$form.createForm(this),
       id: 0,
     };
@@ -74,6 +133,15 @@ export default {
     });
   },
   methods: {
+    onEditorBlur(quill) {
+      console.log("editor blur!", quill);
+    },
+    onEditorFocus(quill) {
+      console.log("editor focus!", quill);
+    },
+    onEditorReady(quill) {
+      console.log("editor ready!", quill);
+    },
     handleGoBack() {
       this.$emit("onGoBack");
     },
@@ -85,7 +153,7 @@ export default {
         if (!err) {
           console.log("Received values of form: ", values);
         } else {
-          return false
+          return false;
         }
       });
     },
